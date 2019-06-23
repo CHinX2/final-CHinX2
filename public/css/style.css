@@ -1,0 +1,91 @@
+/**
+ * TODO(you): Add the CSS necessary to complete your final project.
+ **/
+ @charset "UTF-8";
+ @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i,600,700|Noto+Sans+TC:300,400,500,700&display=swap');
+body {
+    background-color: rgb(38, 49, 82);
+    color: rgb(240, 245, 255);
+    font-family: 'Josefin Sans', 'Noto Sans TC', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+  
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1, h2, h3, h4, h5, h6, #start span{
+    margin: 0;
+    text-align: center;
+  }
+  
+.inactive {
+    display: none !important;
+}
+  
+#main {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+}
+  
+
+#home {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+  
+#home .contents {
+    background-color: rgb(21, 31, 61);
+    box-sizing: border-box;
+    margin: auto;
+    height: 80vh;
+    width: 100vw;
+}
+  
+#home .contents header {
+    margin: 2em 0 0 0;
+}
+
+#home .contents header h1 {
+    font-size: 2.5em;
+    font-weight: normal;
+}
+  
+#home .contents header h2 {
+    font-weight: normal;
+}
+
+#home .contents #logo {
+    background-image: url("../images/ccuwsband-1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 55vh;
+}
+
+#home .contents #start{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(21, 31, 61, 0.301);
+    border: 2px solid #d2d2d2;
+    border-radius: 25%;
+    font-size: 1em;
+    height: 2em;
+    width: 8em;
+    margin: 0em auto;
+}
