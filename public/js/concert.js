@@ -5,7 +5,7 @@ class Concert {
       // Bind methods.
       this._loadComm = this._loadComm.bind(this);
       this._saveComm = this._saveComm.bind(this);
-      this.saveNComm = this.saveNComm.bind(this);
+      this.saveNewComm = this.saveNewComm.bind(this);
 
       console.log(idx);
 
