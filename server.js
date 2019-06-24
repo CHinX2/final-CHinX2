@@ -41,6 +41,22 @@ async function onGetComm(req, res) {
 }
 app.get('/get/:id',onGetComm);
 
+async function onSaveNComm(req, res) {
+  console.log(req.body.id, req.body); 
+  const id = req.body.id;
+  const ncomm = req.body.comm;
+  
+  const newvalues = { 
+    id: id,
+    comm: ncomm
+   };
+  const collection = db.collection('comments');
+  const response = await collection.insertOne(newvalues);
+  res.json({ success: true });
+}
+app.post('/nsave', onSaveNComm);
+
+
 // Save comm
 async function onSaveComm(req, res) {
   console.log(req.body.id, req.body); 

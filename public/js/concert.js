@@ -63,8 +63,25 @@ class Concert {
         textContainer.value = json.comm;
         this.comm = json.comm;
       }
+      else saveNewComm()
 
       document.addEventListener('click',this._saveComm);
+    }
+
+    async _saveNewComm() {
+      const params = {
+        id: this.id,
+        comm: this.comm
+      }
+      const fetchOptions = {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(params)
+      };
+      const result = await fetch('/nsave', fetchOptions);
     }
 
     async _saveComm() {
