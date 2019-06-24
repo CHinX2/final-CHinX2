@@ -15,9 +15,7 @@ class Concert {
       this.containerElement.append(this.pElement);
       this.containerElement.append(this.logElement);
 
-      this.ta = document.querySelector('comm');
-
-      this.ta.addEventListener('keyup', this._saveComm);
+      document.addEventListener('keyup', this._saveComm);
 
       this._loadComm();
     }
