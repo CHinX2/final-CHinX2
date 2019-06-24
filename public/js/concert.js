@@ -15,6 +15,10 @@ class Concert {
       this.containerElement.append(this.pElement);
       this.containerElement.append(this.logElement);
 
+      this.ta = document.querySelector('comm');
+
+      this.ta.addEventListener('keyup', this._saveComm);
+
       this._loadComm();
     }
 
@@ -56,7 +60,7 @@ class Concert {
       const result = await fetch('/get/${this.id}');
       const json = await result.json();
       var textContainer = this.containerElement.querySelector('comm');
-      if(json.comm !== undefined) {
+      if(json.comm !== null) {
         textContainer.textContent = json.comm;
         this.comm = json.comm;
       }
