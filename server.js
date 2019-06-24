@@ -10,6 +10,7 @@ const jsonParser = bodyParser.json();
 app.use(express.static('public'));
 
 let db = null;
+
 async function main() {
   const DATABASE_NAME = 'heroku_hmphls7b';
   const MONGO_URL = `mongodb://user:a123456@ds241977.mlab.com:41977/${DATABASE_NAME}`;
@@ -29,31 +30,33 @@ main();
 
 // TODO(you): Add at least 1 GET route and 1 POST route.
 
-// GET
-async function onGet(req, res) {
-  console.log(req.body);
-  db.collection('comments').find().toArray((err, result) => {
-    if (err) return console.log(err)
-    res.send({data: result})
-  })
+// GET comm
+async function onGetComm(req, res) {
+  const id = req.params.id;
+  const collection = db.collection('comments');
+  const response = await collection.findOne({ _id: id });
+  res.json(response);
 }
-app.get('/',onGet);
+app.get('/get/:id',onGetComm);
 
-// POST
-async function onPost(req, res) {
+// Save comm
+async function onSaveComm(req, res) {
   console.log(req.body);
-  const { _id, time, content } = req.body;
-    if( !_id || !time || !content ){
-        res.sendStatus(403);
-  }
-  const colle = req.params.name;
-  db.collection(colle).save(req.body, (err, result) => {
-      if (err) return console.log(err)
-      console.log('saved to '+colle);
-      res.send(req.body);
-  });
+  
+  const id = req.body.id;
+  const time = req.body.time;
+  const comm = req.body.comm;
+
+  const doc = {
+    _id: id,
+    time: time,
+    comm: comm
+  };
+  const collection = db.collection('comments');
+  const response = await collection.insertOne(doc);
+
 }
-app.post('/:name', onPost);
+app.post('/save', onSaveComm);
 
 // PUT
 async function onPut(req, res) {

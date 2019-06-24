@@ -2,13 +2,22 @@ class Concert {
     constructor(containerElement, idx, nextLog) {
       this.containerElement = containerElement;
       this.nextLog = nextLog;
+      // Bind methods.
+      this._loadComm = this._loadComm.bind(this);
+      this._saveComm = this._saveComm.bind(this);
+      this._saveValuesFromInput = this._saveValuesFromInput.bind(this);
+      this._updateView = this._updateView.bind(this);
+
       console.log(idx);
 
       this.id = idx;
+      this.comm = "Text your comment here.";
       this.pElement = this._createPosterDOM(idx);
       this.logElement = this._createConcertDOM(idx);
       this.containerElement.append(this.pElement);
       this.containerElement.append(this.logElement);
+
+      this._loadComm();
     }
 
     _createPosterDOM(idx) {
@@ -36,11 +45,41 @@ class Concert {
       const comm = document.createElement('textarea');
       comm.classList.add('concert-info');
       comm.classList.add('comm');
-      comm.textContent = "Text your comment here.";
+      comm.textContent = this.comm;
 
       logContainer.appendChild(title);
       logContainer.appendChild(atime);
       logContainer.appendChild(comm);
       return logContainer;
+    }
+
+    async _loadComm() {
+      console.log(this.id);
+      const result = await fetch('/get/${this.id}');
+      const json = await result.json();
+      var textContainer = this.containerElement.querySelector('comm');
+      if(json.comm !== undefined) {
+        textContainer.textContent = json.comm;
+        this.comm = json.comm;
+      }
+    }
+
+    async _saveComm() {
+      event.preventDefault();
+
+      const params = {
+        _id: this.id,
+        comm: this.comm
+      }
+      const fetchOptions = {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(params)
+      };
+      const result = await fetch('/save', fetchOptions);
+      const json = await result.json();
     }
 }
