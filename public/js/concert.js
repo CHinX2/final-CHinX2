@@ -59,12 +59,7 @@ class Concert {
         comm: this.comm
       }
       const fetchOptions = {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(params)
+        method: 'GET'
       };
       const result = await fetch('/get/${this.id}',fetchOptions);
       const json = await result.json();
