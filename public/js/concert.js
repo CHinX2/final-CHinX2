@@ -54,6 +54,10 @@ class Concert {
 
     async _loadComm() {
       console.log(this.id);
+      const params = {
+        id: this.id,
+        comm: this.comm
+      }
       const fetchOptions = {
         method: 'GET',
         headers: {
