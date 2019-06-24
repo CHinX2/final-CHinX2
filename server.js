@@ -51,7 +51,7 @@ async function onSaveNComm(req, res) {
     comm: ncomm
    };
   const collection = db.collection('comments');
-  const response = await collection.insertOne(newvalues);
+  const response = await collection.save(newvalues);
   res.json({ success: true });
 }
 app.post('/nsave', onSaveNComm);
