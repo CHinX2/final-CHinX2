@@ -30,7 +30,7 @@ const CONCERT_INFO = [
   poster: './images/106-1-20161229.jpg'
 },
   {
-  title: '夏天與____。',
+  title: '夏天與＿＿。',
   time: 'June 5, 2016',
   poster: './images/105-2-20160605.jpg'
 },
