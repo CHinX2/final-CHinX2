@@ -54,7 +54,7 @@ class Concert {
 
     async _loadComm() {
       console.log(this.id);
-      const result = await fetch('/get/'+this.id);
+      const result = await fetch('/get/'+$this.id);
       const json = await result.json();
       
       if(json) {
@@ -63,7 +63,7 @@ class Concert {
         this.comm = json.comm;
       }
 
-      document.addEventListener('submit',this._saveComm);
+      document.addEventListener('click',this._saveComm);
     }
 
     async _saveComm() {
