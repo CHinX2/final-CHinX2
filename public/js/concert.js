@@ -15,8 +15,6 @@ class Concert {
       this.containerElement.append(this.pElement);
       this.containerElement.append(this.logElement);
 
-      document.addEventListener('keyup', this._saveComm);
-
       this._loadComm();
     }
 
@@ -45,6 +43,7 @@ class Concert {
       const comm = document.createElement('textarea');
       comm.classList.add('concert-info');
       comm.classList.add('comm');
+      comm.id = "comm";
       comm.textContent = this.comm;
 
       logContainer.appendChild(title);
@@ -57,23 +56,25 @@ class Concert {
       console.log(this.id);
       const result = await fetch('/get/${this.id}');
       const json = await result.json();
-      console.log(json);
-      var textContainer = this.containerElement.querySelector('comm');
-      if(json!==null && json.comm !== null) {
-        textContainer.textContent = json.comm;
+      
+      if(json) {
+        const textContainer = document.querySelector('#comm');
+        textContainer.value = json.comm;
         this.comm = json.comm;
       }
+
+      document.addEventListener('submit',this._saveComm);
     }
 
     async _saveComm() {
       event.preventDefault();
 
       const params = {
-        _id: this.id,
+        id: this.id,
         comm: this.comm
       }
       const fetchOptions = {
-        method: 'post',
+        method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -81,6 +82,5 @@ class Concert {
         body: JSON.stringify(params)
       };
       const result = await fetch('/save', fetchOptions);
-      const json = await result.json();
     }
 }

@@ -34,40 +34,24 @@ main();
 async function onGetComm(req, res) {
   const id = req.params.id;
   const collection = db.collection('comments');
-  const response = await collection.findOne({ _id: id });
+  const response = await collection.findOne({ _id: ObjectId(id) });
   res.json(response);
 }
 app.get('/get/:id',onGetComm);
 
 // Save comm
 async function onSaveComm(req, res) {
-  console.log(req.body);
-  
+  console.log(req.body.id, req.body); 
   const id = req.body.id;
-  const time = req.body.time;
-  const comm = req.body.comm;
-
-  const doc = {
-    _id: id,
-    time: time,
-    comm: comm
-  };
+  const ncomm = req.body.comm;
+  
+  let query = {};
+  if(id) query = {_id: ObjectId(id)};
+  const newvalues = { comm: ncomm };
+  const params = { upsert: true };
   const collection = db.collection('comments');
-  const response = await collection.insertOne(doc);
-
+  const response = await collection.update(query, newvalues, params);
+  res.json({ success: true });
 }
 app.post('/save', onSaveComm);
 
-// PUT
-async function onPut(req, res) {
-  console.log(req.params.name,req.params.id, req.body); 
-  const newvalues = {$set: req.body};
-  const obj = {_id: req.params.id};
-  const colle = req.params.name;
-  db.collection(colle).updateOne(obj, newvalues, function(err, obj) {
-      if (err) throw err;
-      console.log("comment update");
-      res.send('update success');
-  });
-}
-app.put('/:name/:id', onPut);
