@@ -59,7 +59,7 @@ class Concert {
       const json = await result.json();
       console.log(json);
       var textContainer = this.containerElement.querySelector('comm');
-      if(json.comm !== null) {
+      if(json!==null && json.comm !== null) {
         textContainer.textContent = json.comm;
         this.comm = json.comm;
       }
