@@ -8,7 +8,7 @@ class Concert {
 
       console.log(idx);
 
-      this.id = idx;
+      this.id = CONCERT_INFO[idx].title;
       this.comm = "Text your comment here.";
       this.pElement = this._createPosterDOM(idx);
       this.logElement = this._createConcertDOM(idx);
@@ -55,7 +55,7 @@ class Concert {
     async _loadComm() {
       console.log(this.id);
 
-      const result = await fetch('/get/'+this.id,{method: 'GET'});
+      const result = await fetch('/get/'+this.id);
       const json = await result.json();
       console.log(json);
       if(json) {

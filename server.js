@@ -34,7 +34,9 @@ main();
 async function onGetComm(req, res) {
   const id = req.params.id;
   const collection = db.collection('comments');
-  const response = await collection.findOne({ _id: ObjectId(id) });
+
+  const response = await collection.findOne({ id: id });
+  console.log(response);
   res.json(response);
 }
 app.get('/get/:id',onGetComm);
