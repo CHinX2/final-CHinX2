@@ -16,7 +16,7 @@ class Concert {
       this.containerElement.append(this.pElement);
       this.containerElement.append(this.logElement);
 
-      this._loadComm();
+      //this._loadComm();
     }
 
     _createPosterDOM(idx) {
