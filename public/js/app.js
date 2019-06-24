@@ -19,7 +19,7 @@ class App {
 
   goToMain(event) {
     this.home.hide();
-    this.logs.show();
+    this.logs.show(0);
   }
 
   goToHome(event) {

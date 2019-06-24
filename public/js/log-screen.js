@@ -3,34 +3,27 @@ class LogScreen {
     this.containerElement = containerElement;
     this._gotoHome = this._gotoHome.bind(this);
     this.nextLog = this.nextLog.bind(this);
+    this._lclick = this._lclick.bind(this);
+    this._rclick = this._rclick.bind(this);
   }
 
-  show(id, keylist, vallist) {
+  show(now) {
     this.containerElement.classList.remove('inactive');
     this.logContainer = document.querySelector('#log-container');
+    this.now = now;
+    this.next = now;
+    this.larrow = document.querySelector('#l-arrow');
+    this.rarrow = document.querySelector('#r-arrow');
 
     while(this.logContainer.hasChildNodes()) {
       this.logContainer.removeChild(this.logContainer.firstChild);
     }
-    
 
-    this.selected = 0;
-    this.right = 0;
-    this.wrong = 0;
-    this.last = null;
-    this.last_val = 0;
-    this.incorrectTab = [];
-    this.id = id;
-    document.querySelector('.correct').textContent = this.right;
-    document.querySelector('.incorrect').textContent = this.wrong;
-
-    //this.nkey = Object.keys(FLASHCARD_DECKS[i]['words']);
-    //this.nval = FLASHCARD_DECKS[i]['words'];
-    this.nkey = keylist;
-    this.nval = vallist;
-    this.cnt = this.nkey.length;
+    // add button
+    this.larrow.addEventListener('click', this._lclick);
+    this.rarrow.addEventListener('click', this._rclick);
     
-    const concert = new Concert(this.logContainer, this.nkey[0], this.nval[this.nkey[0]], this.nextLog);
+    const concert = new Concert(this.logContainer, this.now, this.nextLog);
     document.addEventListener('card-ans', this._gotoHome);
   }
 
@@ -40,10 +33,20 @@ class LogScreen {
 
   nextLog() {
     //console.log('now:'+this.selected+' '+this.right+' '+this.wrong);
-    if(this.selected < (this.right + this.wrong) && (this.selected+1) !== this.cnt) { 
-      this.selected = this.right + this.wrong;
-      const concert = new Concert(this.flashcardContainer, this.nkey[this.selected], this.nval[this.nkey[this.selected]], this.nextCard );
+    if(this.next !== this.now) { 
+      this.now = this.next;
+      const concert = new Concert(this.logContainer, this.now, this.nextLog );
     }
+  }
+
+  _lclick(event) {
+    if(this.now === 0) this.next = 10;
+    else this.next = this.now - 1;
+  }
+
+  _rclick(event) {
+    if(this.now === 10) this.next = 0;
+    else this.next = this.now + 1;
   }
 
   _gotoHome(event) {

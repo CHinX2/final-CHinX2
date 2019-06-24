@@ -6,6 +6,7 @@
     <title>CS193x Final Project</title>
     <link rel="stylesheet" href="./css/style.css"/>
 
+    <script src="./js/constants.js" defer></script>
     <script src="./js/concert.js" defer></script>
     <script src="./js/log-screen.js" defer></script>
     <script src="./js/home-screen.js" defer></script>
@@ -16,22 +17,22 @@
   <body>
     <!-- TODO(you): Add the HTML necessary to complete your final project. -->
     <div id="home">
-      <div class="contents">
+      <section class="content-h">
         <header>
           <h1>中正大學管弦樂社</h1>
           <h2>CCU Orchestra</h2>
         </header>
         <div id="logo"></div>
         <div id="start"><span>Concert Log</span></div>
-      </div>
+      </section>
     </div>
 
     <div id="main" class="inactive">
-      <div id="log-container">
-        <header>
-          <h1></h1>
-        </header>
-      </div>
+      <section class="content-m">
+        <div id="l-arrow"></div>
+        <div id="log-container"></div>
+        <div id="r-arrow"></div>
+      </section>
     </div>
 
   </body>

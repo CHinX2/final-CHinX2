@@ -9,6 +9,7 @@ body {
     font-family: 'Josefin Sans', 'Noto Sans TC', sans-serif;
     user-select: none;
     -webkit-user-select: none;
+    
   
     width: 100vw;
     height: 100vh;
@@ -22,8 +23,7 @@ body {
 
 h1, h2, h3, h4, h5, h6, #start span{
     margin: 0;
-    text-align: center;
-  }
+}
   
 .inactive {
     display: none !important;
@@ -33,11 +33,53 @@ h1, h2, h3, h4, h5, h6, #start span{
     align-items: center;
     box-sizing: border-box;
     display: flex;
-    flex-direction: column;
     height: 100vh;
     justify-content: center;
 }
-  
+
+#main .content-m {
+    background-color: rgb(230, 223, 213);
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    margin: auto;
+    height: 80vh;
+    width: 100vw;
+}
+
+#log-container {
+    display: flex;
+    flex-grow: 2;
+    flex-direction: row;
+    width: auto;
+    box-sizing: border-box;
+    margin: 2em 0;
+}
+
+.poster {
+    width: 50%;
+    margin: 0em 1em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.info {
+    color: #2b2b2b;
+    display: flex;
+    flex-direction: column;
+}
+
+.info .title {
+    font-size: 3em;
+}
+
+#l-arrow, #r-arrow{
+    box-sizing: border-box;
+    margin: 0;
+    height: 80vh;
+    width: 20vw;
+}
 
 #home {
     align-items: center;
@@ -47,7 +89,7 @@ h1, h2, h3, h4, h5, h6, #start span{
     width: 100vw;
 }
   
-#home .contents {
+#home .content-h {
     background-color: rgb(21, 31, 61);
     box-sizing: border-box;
     margin: auto;
@@ -55,20 +97,21 @@ h1, h2, h3, h4, h5, h6, #start span{
     width: 100vw;
 }
   
-#home .contents header {
+#home .content-h header {
     margin: 2em 0 0 0;
+    text-align: center;
 }
 
-#home .contents header h1 {
+#home .content-h header h1 {
     font-size: 2.5em;
     font-weight: normal;
 }
   
-#home .contents header h2 {
+#home .content-h header h2 {
     font-weight: normal;
 }
 
-#home .contents #logo {
+#home .content-h #logo {
     background-image: url("../images/ccuwsband-1.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -76,7 +119,7 @@ h1, h2, h3, h4, h5, h6, #start span{
     height: 55vh;
 }
 
-#home .contents #start{
+#home .content-h #start{
     display: flex;
     justify-content: center;
     flex-direction: column;
