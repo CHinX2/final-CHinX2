@@ -64,7 +64,7 @@ class Concert {
         textContainer.value = json.comm;
         this.comm = json.comm;
       }
-      else saveNewComm()
+      else this.saveNewComm()
 
       document.addEventListener('click',this._saveComm);
     }
