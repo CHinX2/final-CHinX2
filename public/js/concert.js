@@ -54,7 +54,15 @@ class Concert {
 
     async _loadComm() {
       console.log(this.id);
-      const result = await fetch('/get/'+$this.id);
+      const fetchOptions = {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(params)
+      };
+      const result = await fetch('/get/${this.id}',fetchOptions);
       const json = await result.json();
       
       if(json) {
