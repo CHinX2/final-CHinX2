@@ -9,6 +9,7 @@
 class Concert {
     constructor(containerElement, idx, nextLog) {
       this.containerElement = containerElement;
+      this.nextLog = nextLog;
       console.log(idx);
 
       this.id = idx;
@@ -42,6 +43,8 @@ class Concert {
       atime.classList.add('concert-info');
       atime.classList.add('atime');
       atime.textContent= CONCERT_INFO[idx].time;
+
+
   
       logContainer.appendChild(title);
       logContainer.appendChild(atime);
