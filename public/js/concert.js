@@ -5,6 +5,7 @@ class Concert {
       // Bind methods.
       this._loadComm = this._loadComm.bind(this);
       this._saveComm = this._saveComm.bind(this);
+      this._saveComm = this.saveNComm.bind(this);
 
       console.log(idx);
 
@@ -68,7 +69,7 @@ class Concert {
       document.addEventListener('click',this._saveComm);
     }
 
-    async _saveNewComm() {
+    async saveNewComm() {
       const params = {
         id: this.id,
         comm: this.comm
