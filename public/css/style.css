@@ -82,6 +82,18 @@ h1, h2, h3, h4, h5, h6, #start span{
     font-size: 3em;
 }
 
+.info .comm {
+    font-size: 20px;
+    display: flex;
+    flex-grow: 2;
+    height: auto;
+    width: 20vw;
+    margin: 2em 0 0 0;
+    border-radius: 10px;
+    border: 0px;
+    padding:0.5em;
+}
+
 #l-arrow, #r-arrow{
     display: flex;
     justify-content: center;
@@ -138,7 +150,7 @@ h1, h2, h3, h4, h5, h6, #start span{
     align-items: center;
     background-color: rgba(21, 31, 61, 0.301);
     border: 2px solid #d2d2d2;
-    border-radius: 25%;
+    border-radius: 20px;;
     font-size: 1em;
     height: 2em;
     width: 8em;

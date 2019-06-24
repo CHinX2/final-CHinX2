@@ -1,11 +1,3 @@
-// TODO(you): Modify the class in whatever ways necessary to implement
-// the flashcard app behavior.
-//
-// You may need to do things such as:
-// - Changing the constructor parameters
-// - Adding methods
-// - Adding additional fields
-
 class Concert {
     constructor(containerElement, idx, nextLog) {
       this.containerElement = containerElement;
@@ -17,9 +9,6 @@ class Concert {
       this.logElement = this._createConcertDOM(idx);
       this.containerElement.append(this.pElement);
       this.containerElement.append(this.logElement);
-      //document.querySelector('title').textContent = CONCERT_INFO[idx].title;
-      //document.querySelector('time').textContent = CONCERT_INFO[idx].time;
-      //document.getElementById("poster").style.backgroundImage = "url('"+CONCERT_INFO[idx].poster+"')";
     }
 
     _createPosterDOM(idx) {
@@ -43,11 +32,15 @@ class Concert {
       atime.classList.add('concert-info');
       atime.classList.add('atime');
       atime.textContent= CONCERT_INFO[idx].time;
-
-
   
+      const comm = document.createElement('textarea');
+      comm.classList.add('concert-info');
+      comm.classList.add('comm');
+      comm.textContent = "Text your comment here.";
+
       logContainer.appendChild(title);
       logContainer.appendChild(atime);
+      logContainer.appendChild(comm);
       return logContainer;
     }
 }
