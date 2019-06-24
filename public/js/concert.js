@@ -57,6 +57,7 @@ class Concert {
       console.log(this.id);
       const result = await fetch('/get/${this.id}');
       const json = await result.json();
+      console.log(json);
       var textContainer = this.containerElement.querySelector('comm');
       if(json.comm !== null) {
         textContainer.textContent = json.comm;
