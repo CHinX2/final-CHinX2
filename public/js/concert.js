@@ -5,8 +5,6 @@ class Concert {
       // Bind methods.
       this._loadComm = this._loadComm.bind(this);
       this._saveComm = this._saveComm.bind(this);
-      this._saveValuesFromInput = this._saveValuesFromInput.bind(this);
-      this._updateView = this._updateView.bind(this);
 
       console.log(idx);
 
